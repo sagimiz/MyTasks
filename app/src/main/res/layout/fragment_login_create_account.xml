@@ -3,12 +3,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
+    android:paddingTop="103dp"
+    android:background="@color/colorDarkGreen"
     tools:context=".Fragments.Login.LoginCreateAccountFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <LinearLayout
+        android:id="@+id/email_login_form"
+        android:layout_width="310dp"
+        android:layout_height="386dp"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="74dp"
+            android:layout_height="63dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="42dp"/>
+
+
+
+        <AutoCompleteTextView
+            android:id="@+id/email"
+            android:layout_width="@dimen/login_item_width_margin"
+            android:layout_height="@dimen/login_item_height_margin"
+            android:hint="@string/prompt_email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:layout_marginTop="42dp"
+            android:layout_marginLeft="29dp"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="@dimen/login_item_width_margin"
+            android:layout_height="@dimen/login_item_height_margin"
+            android:hint="@string/prompt_password"
+            android:imeActionId="6"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:imeOptions="actionUnspecified"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="29dp"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/repeat_password"
+            android:layout_width="@dimen/login_item_width_margin"
+            android:layout_height="@dimen/login_item_height_margin"
+            android:hint="@string/repeat_password"
+            android:imeActionId="6"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:imeOptions="actionUnspecified"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="29dp"
+            android:singleLine="true" />
+
+
+        <Button
+            android:id="@+id/email_sign_in_button"
+            android:layout_width="@dimen/login_item_width_margin"
+            android:layout_height="@dimen/login_item_height_margin"
+            android:layout_gravity="center"
+            android:layout_marginTop="34dp"
+            android:text="@string/action_sign_up"
+            android:background="@color/colorEnter"
+            android:textSize="24sp"/>
+
+
+    </LinearLayout>
 
 </FrameLayout>

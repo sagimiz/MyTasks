@@ -1,5 +1,6 @@
 package com.mytask.att.mytasks.Fragments.Login;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,7 +14,7 @@ import com.mytask.att.mytasks.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link LoginCreateAccountFragment.OnFragmentInteractionListener} interface
+ * {@link OnCreateAccountFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link LoginCreateAccountFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -28,7 +29,7 @@ public class LoginCreateAccountFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private OnCreateAccountFragmentInteractionListener mCallback;
 
     public LoginCreateAccountFragment() {
         // Required empty public constructor
@@ -68,28 +69,32 @@ public class LoginCreateAccountFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_login_create_account, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+//    // TODO: Rename method, update argument and hook method into UI event
+//    public void onButtonPressed(Uri uri) {
+//        if (mListener != null) {
+//            mListener.onFragmentInteraction(uri);
+//        }
+//    }
+
+    public void setOnCreateAccountFragmentInteractionListener(Activity activity) {
+        mCallback = (OnCreateAccountFragmentInteractionListener) activity;
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnCreateAccountFragmentInteractionListener) {
+            mCallback = (OnCreateAccountFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+                    + " must implement OnCreateAccountFragmentInteractionListener");
         }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        mCallback = null;
     }
 
     /**
@@ -102,8 +107,8 @@ public class LoginCreateAccountFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface OnCreateAccountFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onSingUpFragmentInteraction();
     }
 }

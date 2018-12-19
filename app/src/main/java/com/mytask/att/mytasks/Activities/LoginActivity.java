@@ -1,17 +1,20 @@
 package com.mytask.att.mytasks.Activities;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
+import com.mytask.att.mytasks.Fragments.Login.LoginCreateAccountFragment;
+import com.mytask.att.mytasks.Fragments.Login.LoginFragment;
 import com.mytask.att.mytasks.R;
 
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity {// implements LoginFragment.OnFragmentInteractionListener {//implements LoaderCallbacks<Cursor> {
+public class LoginActivity extends AppCompatActivity implements LoginFragment.OnLoginFragmentInteractionListener, LoginCreateAccountFragment.OnCreateAccountFragmentInteractionListener {//implements LoaderCallbacks<Cursor> {
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -40,6 +43,24 @@ public class LoginActivity extends AppCompatActivity {// implements LoginFragmen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        if (findViewById(R.id.login_fragments) != null) {
+
+            if (savedInstanceState != null) {
+                return;
+            }
+
+            LoginFragment loginFragment = new LoginFragment();
+            loginFragment.setArguments(getIntent().getExtras());
+
+            getSupportFragmentManager().
+                    beginTransaction().
+                    add(R.id.login_fragments,loginFragment).commit();
+
+
+
+        }
+
 
 //        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 //        LoginFragment loginFragment = new LoginFragment();
@@ -75,21 +96,46 @@ public class LoginActivity extends AppCompatActivity {// implements LoginFragmen
 //        mProgressView = findViewById(R.id.login_progress);
     }
 
-//    @Override
-//    public void onAttachFragment(Fragment fragment) {
-////        if (fragment instanceof LoginFragment) {
-////            LoginFragment loginFragment = (LoginFragment) fragment;
-////            loginFragment.OnFragmentInteractionListener(this);
-////        }
-//    }
+    @Override
+    public void onLoginFragmentCreateAccount() {
+//        if (this.getApplicationContext().getA != null) {
+//            LoginCreateAccountFragment loginCreateAccountFragment = new LoginCreateAccountFragment();
+//            loginCreateAccountFragment.setArguments(getActivity().getIntent().getExtras());
+//            getActivity().getSupportFragmentManager().beginTransaction()
+//                    .add(R.id.login_fragments, loginCreateAccountFragment).commit();
+//        }
+        LoginCreateAccountFragment loginCreateAccountFragment = new LoginCreateAccountFragment();
+        loginCreateAccountFragment.setArguments(getIntent().getExtras());
+        getSupportFragmentManager().beginTransaction()
+                    .add(R.id.login_fragments, loginCreateAccountFragment).commit();
+        //onAttachFragment(loginCreateAccountFragment);
+
+    }
+
+    @Override
+    public void onAttachFragment(Fragment fragment) {
+        if (fragment instanceof LoginFragment) {
+            LoginFragment loginFragment = (LoginFragment) fragment;
+            loginFragment.setOnLoginFragmentInteractionListener(this);
+        }
+        if (fragment instanceof LoginCreateAccountFragment) {
+            LoginCreateAccountFragment loginCreateAccountFragment = (LoginCreateAccountFragment) fragment;
+            loginCreateAccountFragment.setOnCreateAccountFragmentInteractionListener(this);
+        }
+    }
+
+    @Override
+    public void onSingUpFragmentInteraction() {
+
+    }
 
 //    @Override
-//    public void onFragmentInteraction(Uri uri) {
+//    public void onLoginFragmentCreateAccount(Uri uri) {
 //
 //    }
 //
 //    @Override
-//    public void onFragmentInteraction(int position) {
+//    public void onLoginFragmentCreateAccount(int position) {
 //
 //    }
 
