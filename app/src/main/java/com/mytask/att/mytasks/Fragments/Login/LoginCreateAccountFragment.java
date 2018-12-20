@@ -1,10 +1,12 @@
 package com.mytask.att.mytasks.Fragments.Login;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +62,7 @@ public class LoginCreateAccountFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
+   }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,6 +70,7 @@ public class LoginCreateAccountFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login_create_account, container, false);
     }
+
 
 //    // TODO: Rename method, update argument and hook method into UI event
 //    public void onButtonPressed(Uri uri) {
@@ -109,6 +112,6 @@ public class LoginCreateAccountFragment extends Fragment {
      */
     public interface OnCreateAccountFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onSingUpFragmentInteraction();
+        void onSingUpFragmentInteractionClick();
     }
 }

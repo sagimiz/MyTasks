@@ -5,5 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorDarkGreen">#416165</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorTransparentWhite">#B2FFFFFF</color>
     <color name="colorEnter">#68B1A6</color>
+    <color name="colorEnterText">#2A7066</color>
 </resources>

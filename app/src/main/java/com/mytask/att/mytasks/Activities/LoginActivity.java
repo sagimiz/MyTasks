@@ -1,5 +1,6 @@
 package com.mytask.att.mytasks.Activities;
 
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -38,27 +39,25 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.On
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    LoginFragment loginFragment;
+    LoginCreateAccountFragment loginCreateAccountFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        if (findViewById(R.id.login_fragments) != null) {
-
+        if (findViewById(R.id.login_fragments) != null){
             if (savedInstanceState != null) {
                 return;
             }
 
-            LoginFragment loginFragment = new LoginFragment();
+            loginFragment = new LoginFragment();
             loginFragment.setArguments(getIntent().getExtras());
 
             getSupportFragmentManager().
                     beginTransaction().
                     add(R.id.login_fragments,loginFragment).commit();
-
-
-
         }
 
 
@@ -97,18 +96,19 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.On
     }
 
     @Override
-    public void onLoginFragmentCreateAccount() {
-//        if (this.getApplicationContext().getA != null) {
-//            LoginCreateAccountFragment loginCreateAccountFragment = new LoginCreateAccountFragment();
-//            loginCreateAccountFragment.setArguments(getActivity().getIntent().getExtras());
-//            getActivity().getSupportFragmentManager().beginTransaction()
-//                    .add(R.id.login_fragments, loginCreateAccountFragment).commit();
-//        }
-        LoginCreateAccountFragment loginCreateAccountFragment = new LoginCreateAccountFragment();
-        loginCreateAccountFragment.setArguments(getIntent().getExtras());
-        getSupportFragmentManager().beginTransaction()
-                    .add(R.id.login_fragments, loginCreateAccountFragment).commit();
-        //onAttachFragment(loginCreateAccountFragment);
+    public void onLoginFragmentCreateAccountClick() {
+        if (getSupportFragmentManager().findFragmentByTag(LoginCreateAccountFragment.class.getName()) == null) {
+            loginCreateAccountFragment = new LoginCreateAccountFragment();
+            loginCreateAccountFragment.setArguments(getIntent().getExtras());
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.login_fragments, loginCreateAccountFragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
+    }
+
+    @Override
+    public void onLoginFragmentEnterClick() {
 
     }
 
@@ -125,19 +125,9 @@ public class LoginActivity extends AppCompatActivity implements LoginFragment.On
     }
 
     @Override
-    public void onSingUpFragmentInteraction() {
+    public void onSingUpFragmentInteractionClick() {
 
     }
-
-//    @Override
-//    public void onLoginFragmentCreateAccount(Uri uri) {
-//
-//    }
-//
-//    @Override
-//    public void onLoginFragmentCreateAccount(int position) {
-//
-//    }
 
 //    private void populateAutoComplete() {
 ////        if (!mayRequestContacts()) {

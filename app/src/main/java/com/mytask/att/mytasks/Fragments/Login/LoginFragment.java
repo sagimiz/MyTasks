@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class LoginFragment extends Fragment{
     private String mParam2;
 
     private OnLoginFragmentInteractionListener mCallback;
+    private FragmentTransaction mCreateAccountFragmentTransaction;
 
 //    public LoginFragment() {
 //        // Required empty public constructor
@@ -72,7 +74,7 @@ public class LoginFragment extends Fragment{
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCallback.onLoginFragmentCreateAccount();
+                mCallback.onLoginFragmentCreateAccountClick();
             }
         });
         return view;
@@ -87,7 +89,7 @@ public class LoginFragment extends Fragment{
 //    // TODO: Rename method, update argument and hook method into UI event
 //    public void onButtonPressed(Uri uri) {
 //        if (mListener != null) {
-//            mListener.onLoginFragmentCreateAccount(uri);
+//            mListener.onLoginFragmentCreateAccountClick(uri);
 //        }
 //    }
 
@@ -128,6 +130,7 @@ public class LoginFragment extends Fragment{
 //     */
     public interface OnLoginFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onLoginFragmentCreateAccount();
+        public void onLoginFragmentCreateAccountClick();
+        public void onLoginFragmentEnterClick();
     }
 }
